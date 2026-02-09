@@ -182,7 +182,8 @@ public class SimpleLinkedList<T> implements MyList<T>{
         //Se recorre elemento por elemento
         while(current!=null){
             T value= current.getElement();
-            //La unica forma de devolver true con un null, es si hay un elemento en la lista que sea Null
+            //Como no se puede usar equals sobre null, se hace una validación
+            //Si el objeto buscado es null, solo retorna null si el valor del nodo es null
             if (obj==null){
                 if (value==null) return true;
             }
