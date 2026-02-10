@@ -98,9 +98,10 @@ public class SimpleLinkedList<T> implements MyList<T>{
         prev.setNext(target.getNext());
 
         //Como ya eliminados un elemento, actualizamos la cola
-        if (index==size){
+        if (target==tail){
             tail=prev;
         }
+        size--;
         return value;
     }
 
@@ -190,7 +191,7 @@ public class SimpleLinkedList<T> implements MyList<T>{
             else {
                 if (obj.equals(value)) return true;
             }
-            current.getNext();
+            current=current.getNext();
         }
         return false;
     }
