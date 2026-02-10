@@ -16,7 +16,7 @@ public class CustomQueue<T> implements MyQueue<T> {
     //Metodo estricto de offer. Mismo funcionamiento pero arroja excepción si el elemento es null
     public void enqueue(T data) {
         if (!offer(data)){
-            throw new IllegalStateException("La cola está vacía");
+            throw new IllegalStateException("No se permite null en la cola");
         }
     }
 
@@ -35,7 +35,7 @@ public class CustomQueue<T> implements MyQueue<T> {
     public T element() {
         T value=peek();
         if (value==null){
-            throw new IllegalStateException("La cola está vacía");
+            throw new IllegalStateException("No se permite null en la cola");
         }
         return value;
     }
@@ -68,7 +68,7 @@ public class CustomQueue<T> implements MyQueue<T> {
     @Override
     public boolean offer(T data) {
         if (data==null) return false;
-        Node<T> newNode= new Node<>(data,head);
+        Node<T> newNode= new Node<>(data,null);
         if (isEmpty()){
             head=newNode;
         } else {
@@ -80,6 +80,22 @@ public class CustomQueue<T> implements MyQueue<T> {
         }
         size++;
         return true;
+    }
+    //Metodo para imprimir elementos de la cola. Necesario para listar todos los camiones con su respectiva info
+    @Override
+    public String toString() {
+        if (isEmpty()) return "No hay camiones en espera";
+        StringBuilder content = new StringBuilder();
+        Node<T> current = head;
+        int pos = 1;
+        while (current != null) {
+            content.append(pos++)
+                    .append(". ")
+                    .append(current.getElement())
+                    .append("\n");
+            current = current.getNext();
+        }
+        return content.toString();
     }
 }
 

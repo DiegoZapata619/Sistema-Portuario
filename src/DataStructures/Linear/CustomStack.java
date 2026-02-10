@@ -12,13 +12,13 @@ public class CustomStack<T> implements MyStack<T> {
         stackPointer=null;
         size=0;
     }
-
+    //Mete un dato a la pila
     @Override
-    public void push(T dato) {
-        stackPointer= new Node<>(dato,stackPointer);
+    public void push(T data) {
+        stackPointer= new Node<>(data,stackPointer);
         size++;
-
     }
+
     @Override
     public T pop() {
         if (isEmpty()){
@@ -28,7 +28,7 @@ public class CustomStack<T> implements MyStack<T> {
         stackPointer=stackPointer.getNext();
         return value;
     }
-
+    //Se obtiene el elemento en el tope de la pila pero no se elimina
     @Override
     public T peek() {
         if (isEmpty()){
